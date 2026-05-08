@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vivir en Badalona</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="logo">BADALONA</div>
+
+  <ul class="nav-links">
+    <li><a href="#problema">Problema</a></li>
+    <li><a href="#datos">Datos</a></li>
+    <li><a href="#mapa">Mapa</a></li>
+    <li><a href="#entrevista">Entrevista</a></li>
+    <li><a href="#soluciones">Soluciones</a></li>
+    <li><a href="#conclusion">Conclusión</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <p class="mini-title">REPORTAJE MULTIMEDIA</p>
+
+    <h1>Vivir en Badalona:<br>el precio de quedarse</h1>
+
+    <p class="description">
+      El acceso a la vivienda está transformando la vida de miles de vecinos.
+    </p>
+
+    <a href="#problema" class="btn">Explorar</a>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="section intro">
+  <div class="container">
+    <h2>Una ciudad cada vez más inaccesible</h2>
+
+    <p>
+      Badalona ha pasado de ser una alternativa asequible a Barcelona a convertirse en un mercado tensionado.
+    </p>
+
+    <p>
+      El alquiler sube más rápido que los salarios, dificultando la emancipación.
+    </p>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section id="problema" class="section">
+  <div class="container">
+
+    <h2>El problema</h2>
+
+    <p>
+      El acceso a la vivienda en Badalona se ha complicado en los últimos años debido al aumento del precio del alquiler y la estancación de los salarios.
+    </p>
+
+  </div>
+</section>
+
+<!-- DATOS -->
+<section id="datos" class="section stats">
+
+  <div class="container stats-container">
+
+    <h2>El problema en cifras</h2>
+
+    <div class="stats-grid">
+
+      <div class="stat">
+        <h3>16€</h3>
+        <p>€/m² alquiler</p>
+      </div>
+
+      <div class="stat">
+        <h3>+7%</h3>
+        <p>Subida anual</p>
+      </div>
+
+      <div class="stat">
+        <h3>1.000€+</h3>
+        <p>Piso medio</p>
+      </div>
+
+      <div class="stat">
+        <h3>29.780€</h3>
+        <p>Salario medio</p>
+      </div>
+
+    </div>
+
+    <div class="chart-box">
+      <h3>Evolución del alquiler (€/m²)</h3>
+
+      <canvas id="rentChart"></canvas>
+
+      <p class="chart-source">
+        Fuente: Idealista – Informe de precios de alquiler en Badalona (serie histórica aproximada 2021–2026)
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- MAPA -->
+<section id="mapa" class="section map-section">
+
+  <div class="container">
+
+    <h2>Mapa del alquiler en Badalona</h2>
+
+    <p>Precios medios por zonas basados en datos agregados de portales inmobiliarios.</p>
+
+    <div id="map"></div>
+
+  </div>
+
+</section>
+
+<!-- ENTREVISTA -->
+<section id="entrevista" class="section quote">
+
+  <div class="container">
+
+    <h2>Entrevista a un joven de Badalona</h2>
+
+    <p class="quote-text">
+      “Trabajo a jornada completa, pero sigo sin poder pagar un piso solo.”
+    </p>
+
+    <p class="quote-author">
+      Roberto — Joven de Badalona, 25 años
+    </p>
+
+    <div class="video-container">
+      <video controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Tu navegador no soporta vídeo.
+      </video>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SOLUCIONES -->
+<section id="soluciones" class="section">
+  <div class="container">
+
+    <h2>Soluciones propuestas</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Vivienda pública</h3>
+        <p>Construcción de vivienda asequible.</p>
+      </div>
+
+      <div class="card">
+        <h3>Regular alquiler</h3>
+        <p>Control de precios en zonas tensionadas.</p>
+      </div>
+
+      <div class="card">
+        <h3>Pisos turísticos</h3>
+        <p>Reducir presión del mercado residencial.</p>
+      </div>
+
+      <div class="card">
+        <h3>Ayudas jóvenes</h3>
+        <p>Subsidios para emancipación.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CONCLUSIÓN -->
+<section id="conclusion" class="section conclusion">
+  <div class="container">
+
+    <h2>Conclusión</h2>
+
+    <p>
+      El acceso a la vivienda en Badalona se ha convertido en un problema estructural.
+    </p>
+
+  </div>
+</section>
+
+<!-- CHART -->
+<script>
+const ctx = document.getElementById('rentChart');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['2021','2022','2023','2024','2025','2026'],
+    datasets: [{
+      label: '€/m²',
+      data: [11, 12, 14.7, 14.5, 16, 16.1],
+      borderColor: '#fff',
+      borderWidth: 3,
+      tension: 0.3,
+      pointBackgroundColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { labels: { color: 'white' } }
+    },
+    scales: {
+      x: { ticks: { color: 'white' } },
+      y: { ticks: { color: 'white' } }
+    }
+  }
+});
+</script>
+
+<!-- MAPA -->
+<script>
+const map = L.map('map').setView([41.447, 2.245], 13);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap'
+}).addTo(map);
+
+L.circle([41.4500, 2.2470], {radius:800,color:"#ff4444",fillOpacity:0.4})
+.addTo(map).bindPopup("Centro: ~16€/m²");
+
+L.circle([41.4600, 2.2550], {radius:800,color:"#ff9900",fillOpacity:0.4})
+.addTo(map).bindPopup("Montigalà: ~14–15€/m²");
+
+L.circle([41.4400, 2.2300], {radius:800,color:"#ff4444",fillOpacity:0.4})
+.addTo(map).bindPopup("Litoral: ~17€/m²");
+
+L.circle([41.4650, 2.2400], {radius:800,color:"#ffcc00",fillOpacity:0.4})
+.addTo(map).bindPopup("Bufalà: ~13–14€/m²");
+</script>
+
+</body>
+</html>
