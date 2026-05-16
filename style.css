@@ -95,6 +95,13 @@ body{
   margin:auto;
 }
 
+/* IMAGEN ENTRE SECCIONES */
+.section-image{
+  width:100%;
+  border-radius:10px;
+  display:block;
+}
+
 /* STATS */
 .stats{
   background:#0f0f0f;
